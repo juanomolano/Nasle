@@ -8,7 +8,7 @@ import plotly.express as px
 st.set_page_config(
     page_title="Pedidos Muñecos Navidad",
     page_icon="🎄",
-    layout="centered"  # 'centered' se adapta mucho mejor a móviles que 'wide'
+    layout="centered"
 )
 
 # Estilo CSS personalizado para botones grandes en móvil
@@ -25,7 +25,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("🎄 Pedidos de Navidad")
-st.caption("Organizador de modelos para Nasle, Adriana y Marina")
 
 # -----------------------------------------------------------------------------
 # GESTIÓN DE DATOS EN MEMORIA (SESSION STATE)
@@ -51,7 +50,6 @@ tab_registro, tab_resumen, tab_exportar = st.tabs(["📝 Registrar", "📊 Ver T
 with tab_registro:
     st.subheader("Ingresar nuevo pedido")
     
-    # Formulario para evitar recargas en cada clic
     with st.form("form_pedido", clear_on_submit=True):
         persona = st.selectbox(
             "👤 ¿Quién realiza el pedido?",
@@ -71,13 +69,20 @@ with tab_registro:
             step=1
         )
         
+        # Campo de Observaciones
+        observaciones = st.text_area(
+            "📝 Observaciones / Notas adicionales:",
+            placeholder="Ej: Color del sombrero, empaque de regalo, fecha especial..."
+        )
+        
         submit = st.form_submit_button("✅ Guardar Pedido", use_container_width=True)
         
         if submit:
             st.session_state["pedidos"].append({
                 "Persona": persona,
                 "Modelo": modelo,
-                "Cantidad": cantidad
+                "Cantidad": cantidad,
+                "Observaciones": observaciones if observaciones else "Sin observaciones"
             })
             st.success(f"¡Guardado! {cantidad}x {modelo} para {persona}.")
 
@@ -88,7 +93,6 @@ with tab_resumen:
     if st.session_state["pedidos"]:
         df = pd.DataFrame(st.session_state["pedidos"])
         
-        # Tarjetas de totales
         total_muñecos = df["Cantidad"].sum()
         total_pedidos = len(df)
         
@@ -98,7 +102,6 @@ with tab_resumen:
         
         st.divider()
         
-        # Gráfico Donut optimizado para pantallas pequeñas
         df_grouped = df.groupby("Modelo")["Cantidad"].sum().reset_index()
         fig = px.pie(
             df_grouped,
@@ -108,7 +111,6 @@ with tab_resumen:
             title="Distribución por Modelo"
         )
         
-        # Configuración táctil del gráfico
         fig.update_layout(
             margin=dict(t=30, b=10, l=10, r=10),
             legend=dict(orientation="h", yanchor="bottom", y=-0.5, xanchor="center", x=0.5)
@@ -127,7 +129,6 @@ with tab_exportar:
     if st.session_state["pedidos"]:
         df = pd.DataFrame(st.session_state["pedidos"])
         
-        # Generar CSV para descarga fácil en móvil
         csv = df.to_csv(index=False).encode('utf-8')
         
         st.download_button(
