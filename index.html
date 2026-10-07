@@ -1,611 +1,644 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navidad Artesanal | Colección Exclusiva Nasle</title>
-  
-  <!-- Fuentes Elegantes Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-gradient: radial-gradient(circle at top, #0f3822 0%, #081a10 50%, #040906 100%);
-      --accent-gold: #e5c158;
-      --accent-red: #d72638;
-      --accent-green: #25d366;
-      --card-white: #ffffff;
-      --text-dark: #1e293b;
-      --text-muted: #64748b;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navidad Mágica - Muñecos Artesanales Hechos a Mano</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navidad: {
+                            red: '#D42426',
+                            darkred: '#9B111E',
+                            green: '#165B33',
+                            darkgreen: '#0B3B17',
+                            gold: '#D4AF37',
+                            lightgold: '#F3E5AB',
+                            cream: '#FFFDD0',
+                            snow: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <style>
+        /* Custom Keyframe Animations for Snow and Glows */
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(105vh) translateX(20px);
+                opacity: 0.2;
+            }
+        }
 
-    body {
-      background: var(--bg-gradient);
-      color: #ffffff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+        .snowflake {
+            position: absolute;
+            color: #ffffff;
+            font-size: 1rem;
+            user-select: none;
+            pointer-events: none;
+            animation: snowfall linear infinite;
+        }
 
-    /* EFECTO DE NIEVE CAYENDO */
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1rem;
-      pointer-events: none;
-      z-index: 10;
-      animation: fall linear infinite;
-    }
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+        }
 
-    @keyframes fall {
-      to {
-        transform: translateY(105vh) rotate(360deg);
-      }
-    }
+        .gold-border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
 
-    /* BARRA NAVEGACIÓN SUPERIOR */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 5%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
+        /* Glassmorphism utility */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
 
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-    }
+        .glass-dark {
+            background: rgba(11, 59, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
 
-    .logo-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--accent-gold);
-      letter-spacing: 1px;
-    }
-
-    .logo-sub {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.6);
-      letter-spacing: 2px;
-    }
-
-    .nav-links a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    /* HERO PRINCIPAL */
-    .hero {
-      text-align: center;
-      padding: 70px 20px 40px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .badge-hero {
-      display: inline-block;
-      background: rgba(229, 193, 88, 0.15);
-      border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 25px;
-    }
-
-    .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: 2.8rem;
-      line-height: 1.2;
-      font-weight: 800;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .hero-title span {
-      color: var(--accent-gold);
-    }
-
-    .hero-sub {
-      font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 35px;
-    }
-
-    /* SECCIÓN DESTACADOS / BENEFICIOS (SIN ENVÍOS SEGUROS) */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto 60px;
-      padding: 0 20px;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .feature-icon {
-      font-size: 1.8rem;
-    }
-
-    .feature-text h4 {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .feature-text p {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    /* TÍTULO GALERÍA */
-    .section-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-subtitle {
-      color: var(--accent-gold);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    .section-main-title {
-      font-family: 'Cinzel', serif;
-      font-size: 2.2rem;
-      margin: 10px 0;
-    }
-
-    /* GALERÍA EN TARJETAS BLANCAS CON ESTILO FOTO 3 */
-    .products-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 80px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .product-card {
-      background: var(--card-white);
-      color: var(--text-dark);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .img-wrapper {
-      position: relative;
-      height: 280px;
-      background: #f1f5f9;
-    }
-
-    .product-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .badge-tag {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: var(--accent-red);
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .badge-dim {
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
-      background: #334155;
-      color: white;
-      padding: 5px 12px;
-      border-radius: 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .product-body {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .product-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 10px;
-    }
-
-    .product-desc {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.5;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .price-label {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .product-price {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--accent-red);
-      margin-bottom: 15px;
-    }
-
-    .btn-wa-buy {
-      background-color: var(--accent-green);
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      padding: 14px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .btn-wa-buy:hover {
-      background-color: #1eb954;
-      transform: translateY(-2px);
-    }
-
-    /* SECCIÓN VIDEO DEMOSTRACIÓN */
-    .video-section {
-      max-width: 900px;
-      margin: 0 auto 80px;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* Ratio 16:9 */
-      height: 0;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 2px solid var(--accent-gold);
-    }
-
-    .video-wrapper iframe, .video-wrapper video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* BOTÓN WHATSAPP FLOTANTE CON BRINCO/LATIDO */
-    .floating-wa-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: var(--accent-green);
-      color: white;
-      padding: 14px 22px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
-      z-index: 1000;
-      animation: pulse-bounce 2s infinite;
-    }
-
-    @keyframes pulse-bounce {
-      0%, 100% {
-        transform: translateY(0) scale(1);
-      }
-      50% {
-        transform: translateY(-8px) scale(1.03);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-title { font-size: 1.9rem; }
-      .nav-links { display: none; }
-    }
-  </style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B3B17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D42426;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body>
+<body class="font-sans bg-slate-900 text-slate-800 antialiased overflow-x-hidden selection:bg-navidad-red selection:text-white">
 
-  <!-- ANIMACIÓN DE COPOS DE NIEVE CAYENDO -->
-  <script>
-    function createSnowflakes() {
-      const snowContainer = document.body;
-      for (let i = 0; i < 30; i++) {
-        const flake = document.createElement('div');
-        flake.className = 'snowflake';
-        flake.innerHTML = '❄';
-        flake.style.left = Math.random() * 100 + 'vw';
-        flake.style.animationDuration = (Math.random() * 3 + 4) + 's';
-        flake.style.opacity = Math.random();
-        flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
-        snowContainer.appendChild(flake);
-      }
-    }
-    window.onload = createSnowflakes;
-  </script>
+    <!-- Canvas Overlay for Snow -->
+    <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
-  <!-- NAVEGACIÓN -->
-  <nav>
-    <div class="logo-container">
-      <span class="logo-title">NAVIDAD ARTESANAL</span>
-      <span class="logo-sub">COLECCIÓN EXCLUSIVA NASLE</span>
+    <!-- Header Navigation -->
+    <nav class="sticky top-0 z-40 bg-navidad-darkgreen/90 backdrop-blur-md border-b border-navidad-gold/20 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl text-navidad-gold"><i class="fa-solid fa-sleigh"></i></span>
+                    <div>
+                        <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
+                        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva Nasle</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#coleccion" class="hover:text-navidad-gold transition-colors">Colección</a>
+                    <a href="#detalles" class="hover:text-navidad-gold transition-colors">Ver en Video</a>
+                    <a href="#testimonios" class="hover:text-navidad-gold transition-colors">Clientes Felices</a>
+                    <a href="#faq" class="hover:text-navidad-gold transition-colors">Preguntas Frecuentes</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button onclick="openCartModal()" class="relative bg-navidad-red hover:bg-navidad-darkred text-white px-4 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-red-900/50 transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-shopping-bag"></i>
+                        <span class="hidden sm:inline">Mi Pedido</span>
+                        <span id="cart-counter" class="bg-navidad-gold text-slate-900 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-b from-navidad-darkgreen via-slate-900 to-slate-950 text-white overflow-hidden py-16 px-4">
+        <!-- Ambient Lighting Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-navidad-red/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-navidad-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10 space-y-8">
+            <div class="inline-flex items-center space-x-2 bg-navidad-gold/10 border border-navidad-gold/30 rounded-full px-4 py-1.5 text-navidad-lightgold text-sm font-medium animate-pulse">
+                <span>✨ Edición Limitada Navidad 2026</span>
+                <span class="text-xs bg-navidad-red text-white px-2 py-0.5 rounded-full">Hecho a Mano</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-slate-100">
+                Lleva la Magia de la Navidad a Tu Hogar con <span class="text-transparent bg-clip-text bg-gradient-to-r from-navidad-gold via-navidad-lightgold to-yellow-200">Muñecos Artesanales</span> Únicos
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
+                Diseños exclusivos confeccionados con amor, acabados de lujo y detalles bordados a mano. El toque cálido y acogedor que tu familia recordará por siempre.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#coleccion" class="w-full sm:w-auto bg-gradient-to-r from-navidad-red to-navidad-darkred hover:from-red-600 hover:to-red-800 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl gold-glow hover:scale-105 transition-all flex items-center justify-center space-x-3">
+                    <span>Explorar la Colección</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+                <a href="https://wa.me/?text=Hola!%20Me%20interesa%20conocer%20mas%20de%20los%20munecos%20de%20navidad" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-all flex items-center justify-center space-x-3 border border-emerald-400/30">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Asesoría Personalizada</span>
+                </a>
+            </div>
+
+            <!-- Value Props Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 text-left">
+                <div class="glass-dark p-4 rounded-xl flex items-center space-x-3 border-navidad-gold/20">
+                    <i class="fa-solid fa-hands-holding-heart text-2xl text-navidad-gold"></i>
+                    <div>
+                        <h4 class="font-bold text-sm text-white">100% Artesanal</h4>
+                        <p class="text-xs text-slate-300">Confeccionados a mano</p>
+                    </div>
+                </div>
+                <div class="glass-dark p-4 rounded-xl flex items-center space-x-3 border-navidad-gold/20">
+                    <i class="fa-solid fa-truck-fast text-2xl text-navidad-gold"></i>
+                    <div>
+                        <h4 class="font-bold text-sm text-white">Envíos Seguros</h4>
+                        <p class="text-xs text-slate-300">Empaque protector</p>
+                    </div>
+                </div>
+                <div class="glass-dark p-4 rounded-xl flex items-center space-x-3 border-navidad-gold/20">
+                    <i class="fa-solid fa-gem text-2xl text-navidad-gold"></i>
+                    <div>
+                        <h4 class="font-bold text-sm text-white">Materiales De Lujo</h4>
+                        <p class="text-xs text-slate-300">Teladas e hilos finos</p>
+                    </div>
+                </div>
+                <div class="glass-dark p-4 rounded-xl flex items-center space-x-3 border-navidad-gold/20">
+                    <i class="fa-solid fa-heart-circle-check text-2xl text-navidad-gold"></i>
+                    <div>
+                        <h4 class="font-bold text-sm text-white">Garantía Total</h4>
+                        <p class="text-xs text-slate-300">Satisfacción asegurada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="coleccion" class="py-20 bg-slate-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold text-navidad-gold uppercase tracking-widest">Nuestra Galería Exclusiva</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold text-white">Elige Tus Muñecos Favoritos</h3>
+                <p class="text-slate-400 max-w-2xl mx-auto text-base">
+                    Cada uno posee personalidad propia, ropa detallada y estructuras ajustables para decorar tus chimeneas, árboles y salas.
+                </p>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product items populated dynamically by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="detalles" class="py-20 bg-gradient-to-b from-slate-950 via-navidad-darkgreen/40 to-slate-950 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-navidad-gold font-semibold text-sm uppercase tracking-wider">Demostración en Vivo</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">Siente la Calidad y el Detalle en Cada Costura</h2>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        Nuestros personajes cuentan con mecanismos de piernas extensibles, telas de felpa ultrasuaves, bordados dorados e iluminación integrada opcional para llenar de vida cualquier rincón de tu casa.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-navidad-red/20 p-3 rounded-lg text-navidad-gold text-xl">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Patas Telescópicas Ajustables</h4>
+                                <p class="text-slate-400 text-sm">Cambia la altura de tu Papá Noel o Reno según el espacio donde lo ubiques.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-navidad-red/20 p-3 rounded-lg text-navidad-gold text-xl">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Rellenos de Alta Densidad</h4>
+                                <p class="text-slate-400 text-sm">Mantienen su forma erguida y esponjosa año tras año sin deformarse.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Showcase Placeholder/Player -->
+                <div class="relative group rounded-3xl overflow-hidden border-2 border-navidad-gold/30 shadow-2xl bg-slate-900 aspect-video flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1543589077-47d5199647ce?auto=format&fit=crop&w=1200&q=80" alt="Video Showcase Navideño" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70">
+                    <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-6 space-y-4">
+                        <button onclick="playVideoModal()" class="w-20 h-20 bg-navidad-red hover:bg-red-600 text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-all gold-glow">
+                            <i class="fa-solid fa-play ml-1"></i>
+                        </button>
+                        <span class="font-serif font-bold text-xl text-white">Ver Detalles en Video HD</span>
+                        <span class="text-xs text-slate-300 bg-black/60 px-3 py-1 rounded-full">Duración: 1:30 min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold text-navidad-gold uppercase tracking-widest">Experiencias Reales</h2>
+                <h3 class="font-serif text-3xl sm:text-5xl font-bold">Lo Que Dicen Nuestras Familias</h3>
+                <p class="text-slate-400 max-w-2xl mx-auto">Cientos de hogares ya han transformado su decoración navideña con nuestras creaciones.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-dark p-8 rounded-2xl space-y-4 relative">
+                    <div class="text-navidad-gold text-sm flex space-x-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed italic">
+                        "El Papá Noel patas largas superó mis expectativas. Mis hijos quedaron maravillados con la altura y la suavidad de los acabados. ¡Llegó impecable a mi casa!"
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-navidad-red flex items-center justify-center font-bold text-white">MC</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">María Camila R.</h4>
+                            <p class="text-xs text-slate-400">Bogotá, Colombia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass-dark p-8 rounded-2xl space-y-4 relative">
+                    <div class="text-navidad-gold text-sm flex space-x-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed italic">
+                        "Pedí la pareja de Mamá Noel y Elfo. La atención por WhatsApp fue súper atenta y rápida. Realmente se nota el amor con el que están confeccionados."
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-navidad-green flex items-center justify-center font-bold text-white">AL</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Andrea L.</h4>
+                            <p class="text-xs text-slate-400">Medellín, Colombia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass-dark p-8 rounded-2xl space-y-4 relative">
+                    <div class="text-navidad-gold text-sm flex space-x-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed italic">
+                        "El Reno Navideño es hermoso. Los detalles dorados y las botas se ven muy elegantes en la entrada del apartamento. Lo recomiendo al 100%."
+                    </p>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-navidad-gold text-slate-900 flex items-center justify-center font-bold">LG</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Luisa G.</h4>
+                            <p class="text-xs text-slate-400">Cali, Colombia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-slate-950 text-white border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-12">
+                <h2 class="text-xs font-bold text-navidad-gold uppercase tracking-widest">Resuelve tus dudas</h2>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold">Preguntas Frecuentes</h3>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-slate-900 rounded-xl p-6 border border-slate-800 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-lg text-slate-100">¿Hacen envíos a todo el país?</h4>
+                        <i class="fa-solid fa-chevron-down text-navidad-gold transition-transform duration-300"></i>
+                    </div>
+                    <p class="hidden text-slate-400 text-sm mt-3 leading-relaxed">
+                        ¡Sí! Realizamos envíos nacionales seguros a través de transportadoras coordinadas directamente por WhatsApp para garantizar que tu pedido llegue perfecto a la puerta de tu casa.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 rounded-xl p-6 border border-slate-800 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-lg text-slate-100">¿Puedo personalizar los colores o telas?</h4>
+                        <i class="fa-solid fa-chevron-down text-navidad-gold transition-transform duration-300"></i>
+                    </div>
+                    <p class="hidden text-slate-400 text-sm mt-3 leading-relaxed">
+                        Al ser productos 100% artesanales, podemos adaptar tonos de ropa o acabados especiales según disponibilidad. ¡Consúltanos por WhatsApp antes de tu pedido!
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 rounded-xl p-6 border border-slate-800 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-lg text-slate-100">¿Cuáles son las opciones de pago?</h4>
+                        <i class="fa-solid fa-chevron-down text-navidad-gold transition-transform duration-300"></i>
+                    </div>
+                    <p class="hidden text-slate-400 text-sm mt-3 leading-relaxed">
+                        Aceptamos transferencias bancarias (Bancolombia, Nequi, Daviplata) y pagos con tarjeta de crédito acordados al finalizar tu compra.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-6">
+            <div class="flex justify-center items-center space-x-2 text-2xl font-serif text-white">
+                <i class="fa-solid fa-gift text-navidad-red"></i>
+                <span>Navidad Artesanal</span>
+            </div>
+            <p class="text-sm max-w-md mx-auto">Creando recuerdos inolvidables para las familias colombianas cada Navidad.</p>
+            <div class="text-xs text-slate-500 pt-6">
+                © 2026 Navidad Artesanal. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20munecos%20de%20navidad" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-all animate-bounce">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Cart Modal Drawer -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex justify-end transition-opacity">
+        <div class="bg-slate-900 text-white w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl border-l border-slate-800">
+            <div>
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                    <h3 class="font-serif text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-shopping-bag text-navidad-gold"></i> Resumen de tu Pedido
+                    </h3>
+                    <button onclick="closeCartModal()" class="text-slate-400 hover:text-white text-2xl">&times;</button>
+                </div>
+
+                <div id="cart-items" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <!-- Cart items injected here -->
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-4 space-y-4">
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total Estimado:</span>
+                    <span id="cart-total" class="text-navidad-gold">$0 COP</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold flex items-center justify-center space-x-2 text-lg shadow-xl">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Confirmar Pedido por WhatsApp</span>
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="nav-links">
-      <a href="#catalogo">Colección</a>
-      <a href="#demostracion">Ver en Video</a>
-      <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20más%20información" target="_blank" style="color: var(--accent-gold);">Contacto WhatsApp</a>
-    </div>
-  </nav>
 
-  <!-- HERO PRINCIPAL -->
-  <header class="hero">
-    <span class="badge-hero">✨ Edición Limitada Navidad 2026 • Hecho a Mano</span>
-    <h1 class="hero-title">LLEVA LA MAGIA DE LA NAVIDAD A TU HOGAR CON <span>MUÑECOS ARTESANALES ÚNICOS</span></h1>
-    <p class="hero-sub">Diseños exclusivos confeccionados con amor, acabados de lujo y detalles bordados a mano. El toque cálido y acogedor que tu familia recordará por siempre.</p>
-  </header>
-
-  <!-- BENEFICIOS (SIN ENVÍOS SEGUROS) -->
-  <div class="features-grid">
-    <div class="feature-card">
-      <span class="feature-icon">🧵</span>
-      <div class="feature-text">
-        <h4>100% Artesanal</h4>
-        <p>Confeccionados a mano</p>
-      </div>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">💎</span>
-      <div class="feature-text">
-        <h4>Materiales De Lujo</h4>
-        <p>Telas e hilos finos</p>
-      </div>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">💛</span>
-      <div class="feature-text">
-        <h4>Garantía Total</h4>
-        <p>Satisfacción asegurada</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECCIÓN CATÁLOGOS CON TARJETAS BLANCAS -->
-  <div class="section-header" id="catalogo">
-    <span class="section-subtitle">NUESTRA GALERÍA EXCLUSIVA</span>
-    <h2 class="section-main-title">ELIGE TUS MUÑECOS FAVORITOS</h2>
-    <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Cada uno posee personalidad propia, ropa detallada y estructuras ajustables.</p>
-  </div>
-
-  <div class="products-container">
-
-    <!-- MUÑECO 1 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Más Vendido</span>
-        <img src="muneco_nieve_piernas_largas.jpg" alt="Muñeco de Nieve Piernas Largas" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Mu%C3%B1eco+de+Nieve'">
-        <span class="badge-dim">📏 Alto: 65 cm</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">MUÑECO DE NIEVE PIERNAS LARGAS</h3>
-        <p class="product-desc">Encantador muñeco de nieve artesanal con gorro y bufanda de tejido nórdico.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$45.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Mu%C3%B1eco%20de%20Nieve%20Piernas%20Largas%20($45.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-3xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700">
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl">&times;</button>
+            <div class="aspect-video bg-black flex items-center justify-center text-center p-8">
+                <div class="space-y-4">
+                    <i class="fa-solid fa-film text-5xl text-navidad-gold animate-pulse"></i>
+                    <p class="text-white font-medium text-lg">Aquí puedes vincular tus videos promocionales de los muñecos (MP4 o YouTube Shorts).</p>
+                    <p class="text-xs text-slate-400">Demostración en vivo de textura, acabados y mecanismo de estiramiento.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- MUÑECO 2 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Exclusivo</span>
-        <img src="set_trio_personajes.jpg" alt="Set Navideño Trío" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Set+Tr%C3%ADo'">
-        <span class="badge-dim">📏 Set x3 Unidades</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">SET NAVIDEÑO TRÍO DE PERSONAJES</h3>
-        <p class="product-desc">Trío decorativo en fieltro: Papá Noel, Muñeco de Nieve y Reno con hermosos acabados.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$60.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Set%20Navide%C3%B1o%20Tr%C3%ADo%20de%20Personajes%20($60.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
-    </div>
+    <script>
+        // Product Data Catalogue
+        const products = [
+            {
+                id: 1,
+                name: "Papá Noel Patas Largas",
+                price: 180000,
+                dimensions: "Extensible de 60 cm a 110 cm",
+                description: "El rey de la decoración. Mecanismo de piernas telescópicas ajustables, gorro de terciopelo y botas acolchadas.",
+                image: "https://images.unsplash.com/photo-1543589077-47d5199647ce?auto=format&fit=crop&w=800&q=80",
+                badge: "Más Vendido"
+            },
+            {
+                id: 2,
+                name: "Mamá Noel Elegante",
+                price: 165000,
+                dimensions: "75 cm de alto",
+                description: "Detalles dorados bordados a mano, delantal de encaje fino y linda cesta de accesorios navideños.",
+                image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=800&q=80",
+                badge: "Exclusivo"
+            },
+            {
+                id: 3,
+                name: "Muñeco de Nieve Sonriente",
+                price: 150000,
+                dimensions: "65 cm de alto",
+                description: "Confeccionado en felpa ultra suave, bufanda de lana tejida y sombrero de copa aterciopelado.",
+                image: "https://images.unsplash.com/photo-1576692155415-95f820a2c4f1?auto=format&fit=crop&w=800&q=80",
+                badge: "Favorito Niños"
+            },
+            {
+                id: 4,
+                name: "Reno Navideño Dorado",
+                price: 170000,
+                dimensions: "Extensible hasta 95 cm",
+                description: "Cuernos con acabado satinado dorado, cascabeles funcionales y textura suave al tacto.",
+                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
+                badge: "Tendencia 2026"
+            },
+            {
+                id: 5,
+                name: "Elfo Mágico de la Navidad",
+                price: 135000,
+                dimensions: "50 cm de alto",
+                description: "Diseño tierno y divertido con medias a rayas, cascabeles en las zapatillas y brazos moldeables.",
+                image: "https://images.unsplash.com/photo-1513297887119-d46091b24bfa?auto=format&fit=crop&w=800&q=80",
+                badge: "Edición Limitada"
+            }
+        ];
 
-    <!-- MUÑECO 3 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Mesa Navideña</span>
-        <img src="set_posavasos_papa_noel.jpg" alt="Set Posavasos" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Set+Individuales'">
-        <span class="badge-dim">📏 Set x4 Puestos</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">SET INDIVIDUALES / POSAVASOS PAPÁ NOEL</h3>
-        <p class="product-desc">Set x4 de bordados navideños en tonos plateados y rojos con destellos elegantes.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$50.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Set%20de%20Individuales/Posavasos%20($50.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
-    </div>
+        let cart = [];
 
-    <!-- MUÑECO 4 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Edición Premium</span>
-        <img src="papa_noel_sentado_premium.jpg" alt="Papá Noel Sentado" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Pap%C3%A1+Noel+Sentado'">
-        <span class="badge-dim">📏 Alto: 55 cm</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">PAPÁ NOEL SENTADO PREMIUM</h3>
-        <p class="product-desc">Figura de Papá Noel estilo tradicional con traje estampado de copos de nieve y botas doradas.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$75.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Pap%C3%A1%20Noel%20Sentado%20Premium%20($75.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
-    </div>
+        // Render Products to Grid
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = products.map(product => `
+                <div class="glass-card rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 border border-slate-200">
+                    <div>
+                        <div class="relative h-72 overflow-hidden bg-slate-100">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 bg-navidad-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                                ${product.badge}
+                            </span>
+                            <span class="absolute bottom-4 right-4 bg-slate-900/80 backdrop-blur-md text-navidad-lightgold text-xs px-3 py-1 rounded-full font-medium border border-navidad-gold/30">
+                                <i class="fa-solid fa-ruler-vertical mr-1"></i>${product.dimensions}
+                            </span>
+                        </div>
 
-    <!-- MUÑECO 5 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Clásico</span>
-        <img src="papa_noel_clasico_pie.jpg" alt="Papá Noel Clásico" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Pap%C3%A1+Noel+Cl%C3%A1sico'">
-        <span class="badge-dim">📏 Alto: 70 cm</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">PAPÁ NOEL CLÁSICO DE PIE</h3>
-        <p class="product-desc">Muñeco tejido a mano de Papá Noel con detalles afelpados y cinturón de hebilla dorada.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$80.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Pap%C3%A1%20Noel%20Cl%C3%A1sico%20de%20Pie%20($80.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
-    </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="font-serif font-bold text-2xl text-slate-900">${product.name}</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">${product.description}</p>
+                            
+                            <div class="pt-2 flex items-baseline justify-between">
+                                <span class="text-xs text-slate-500 uppercase font-semibold">Precio Artesanal</span>
+                                <span class="text-2xl font-bold text-navidad-darkred">$${product.price.toLocaleString('es-CO')} COP</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- MUÑECO 6 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Elegante</span>
-        <img src="papa_noel_senton_elegante.jpg" alt="Papá Noel Sentón" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Pap%C3%A1+Noel+Sent%C3%B3n'">
-        <span class="badge-dim">📏 Extensible 60-100 cm</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">PAPÁ NOEL SENTÓN ELEGANTE</h3>
-        <p class="product-desc">Muñeco decorativo de piernas largas ideal para repisas, chimeneas o muebles de entrada.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$70.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Pap%C3%A1%20Noel%20Sent%C3%B3n%20Elegante%20($70.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
-    </div>
+                    <div class="p-6 pt-0 space-y-2">
+                        <button onclick="addToCart(${product.id})" class="w-full bg-navidad-green hover:bg-navidad-darkgreen text-white py-3.5 rounded-xl font-bold shadow-lg flex items-center justify-center space-x-2 transition-all">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al Pedido</span>
+                        </button>
+                        <button onclick="directWhatsApp(${product.id})" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2 border border-slate-300">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
+                            <span>Consultar por WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-    <!-- MUÑECO 7 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Gran Tamaño</span>
-        <img src="papa_noel_articulado_grande.jpg" alt="Papá Noel Articulado" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Pap%C3%A1+Noel+Grande'">
-        <span class="badge-dim">📏 Alto: 90 cm</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">PAPÁ NOEL ARTICULADO GRANDE</h3>
-        <p class="product-desc">Figura artesanal de gran tamaño con barbilla de lana texturizada y traje navideño.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$90.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Pap%C3%A1%20Noel%20Articulado%20Grande%20($90.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
-    </div>
+        // Cart Logic
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
 
-    <!-- MUÑECO 8 -->
-    <div class="product-card">
-      <div class="img-wrapper">
-        <span class="badge-tag">Adorno Pared/Puerta</span>
-        <img src="colgante_navideno_puerta.jpg" alt="Colgante Puerta" class="product-img" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=Colgante+Puerta'">
-        <span class="badge-dim">📏 Diámetro: 40 cm</span>
-      </div>
-      <div class="product-body">
-        <h3 class="product-title">COLGANTE NAVIDEÑO DE PUERTA</h3>
-        <p class="product-desc">Adorno mural para puerta o pared con la palabra 'Navidad' y rostro relieve de Papá Noel.</p>
-        <span class="price-label">PRECIO ARTESANAL</span>
-        <p class="product-price">$55.000 COP</p>
-        <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20pedir%20el%20Colgante%20Navide%C3%B1o%20de%20Puerta%20($55.000)" target="_blank" class="btn-wa-buy">
-          Pedir por WhatsApp 💬
-        </a>
-      </div>
-    </div>
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
 
-  </div>
+            updateCartUI();
+            openCartModal();
+        }
 
-  <!-- SECCIÓN DEMOSTRACIÓN EN VIDEO -->
-  <div class="video-section" id="demostracion">
-    <div class="section-header">
-      <span class="section-subtitle">DEMOSTRACIÓN Y DETALLES</span>
-      <h2 class="section-main-title">CONOCE NUESTRO TRABAJO EN VIDEO</h2>
-    </div>
-    <div class="video-wrapper">
-      <!-- Puedes cambiar la URL del video de Youtube por la tuya cuando lo tengas listo -->
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demostración Muñecos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCounter = document.getElementById('cart-counter');
+            const cartTotal = document.getElementById('cart-total');
 
-  <!-- BOTÓN FLOTANTE WHATSAPP CON BRINCO/ANIMACIÓN -->
-  <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20hacer%20un%20pedido%20o%20consulta%20de%20los%20mu%C3%B1ecos%20navide%C3%B1os" target="_blank" class="floating-wa-btn">
-    💬 Pregúntame o pide acá
-  </a>
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
+            cartCounter.innerText = totalCount;
+            cartTotal.innerText = `$${totalPrice.toLocaleString('es-CO')} COP`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `<p class="text-slate-400 text-center py-8">Tu carrito está vacío todavía.</p>`;
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <div>
+                        <h4 class="font-bold text-sm text-white">${item.name}</h4>
+                        <p class="text-xs text-navidad-gold">$${item.price.toLocaleString('es-CO')} COP x ${item.quantity}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="changeQuantity(${item.id}, -1)" class="w-7 h-7 bg-slate-700 text-white rounded-md flex items-center justify-center font-bold">-</button>
+                        <span class="text-sm font-bold">${item.quantity}</span>
+                        <button onclick="changeQuantity(${item.id}, 1)" class="w-7 h-7 bg-slate-700 text-white rounded-md flex items-center justify-center font-bold">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function directWhatsApp(productId) {
+            const product = products.find(p => p.id === productId);
+            const message = `Hola!%20Me%20interesa%20comprar%20el%20muñeco:%20*${encodeURIComponent(product.name)}*%20($${product.price.toLocaleString('es-CO')}%20COP).%20¿Tienen%20disponibilidad?`;
+            window.open(`https://wa.me/?text=${message}`, '_blank');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return;
+
+            let message = "Hola!%20Deseo%20realizar%20el%20siguiente%20pedido%20de%20Muñecos%20Navideños:%0A%0A";
+            let total = 0;
+
+            cart.forEach(item => {
+                message += `•%20*${encodeURIComponent(item.name)}*%20x${item.quantity}%20-%20$${(item.price * item.quantity).toLocaleString('es-CO')}%20COP%0A`;
+                total += item.price * item.quantity;
+            });
+
+            message += `%0A*Total:*%20$${total.toLocaleString('es-CO')}%20COP%0A%0A¿Me%20pueden%20ayudar%20con%20los%20datos%20de%20envío%20y%20pago?`;
+            window.open(`https://wa.me/?text=${message}`, '_blank');
+        }
+
+        // Modals Controls
+        function openCartModal() {
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function playVideoModal() {
+            document.getElementById('video-modal').classList.remove('hidden');
+            document.getElementById('video-modal').classList.add('flex');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('video-modal').classList.add('hidden');
+            document.getElementById('video-modal').classList.remove('flex');
+        }
+
+        function toggleFaq(element) {
+            const p = element.querySelector('p');
+            const icon = element.querySelector('i');
+            p.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Snow Generator Effect
+        function createSnow() {
+            const container = document.getElementById('snow-container');
+            const particleCount = 35;
+
+            for (let i = 0; i < particleCount; i++) {
+                const flake = document.createElement('div');
+                flake.className = 'snowflake';
+                flake.innerHTML = '❄';
+                flake.style.left = Math.random() * 100 + 'vw';
+                flake.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                flake.style.opacity = Math.random();
+                flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                flake.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(flake);
+            }
+        }
+
+        // Initialize On Load
+        window.onload = function() {
+            renderProducts();
+            createSnow();
+        };
+    </script>
 </body>
 </html>
