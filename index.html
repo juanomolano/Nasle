@@ -34,7 +34,6 @@
     </script>
 
     <style>
-        /* Custom Keyframe Animations for Snow and Glows */
         @keyframes snowfall {
             0% {
                 transform: translateY(-10vh) translateX(0);
@@ -59,11 +58,6 @@
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
         }
 
-        .gold-border-glow {
-            border: 1px solid rgba(212, 175, 55, 0.4);
-        }
-
-        /* Glassmorphism utility */
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
@@ -76,7 +70,6 @@
             border: 1px solid rgba(212, 175, 55, 0.25);
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -91,7 +84,12 @@
 </head>
 <body class="font-sans bg-slate-900 text-slate-800 antialiased overflow-x-hidden selection:bg-navidad-red selection:text-white">
 
-    <!-- Canvas Overlay for Snow -->
+    <!-- Audio Navideño Suave de Fondo -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/27/audio_18c5e937d5.mp3?filename=christmas-background-music-128264.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Overlay de Nieve -->
     <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
     <!-- Header Navigation -->
@@ -102,7 +100,7 @@
                     <span class="text-3xl text-navidad-gold"><i class="fa-solid fa-sleigh"></i></span>
                     <div>
                         <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
-                        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva Nasle</span>
+                        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva</span>
                     </div>
                 </div>
 
@@ -122,8 +120,7 @@
     </nav>
 
     <!-- Hero Banner -->
-    <section class="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-b from-navidad-darkgreen via-slate-900 to-slate-950 text-white overflow-hidden py-16 px-4">
-        <!-- Ambient Lighting Glows -->
+    <section class="relative min-h-[75vh] flex items-center justify-center bg-gradient-to-b from-navidad-darkgreen via-slate-900 to-slate-950 text-white overflow-hidden py-16 px-4">
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-navidad-red/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 right-10 w-80 h-80 bg-navidad-gold/15 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -141,19 +138,8 @@
                 Diseños exclusivos confeccionados con amor, acabados de lujo y detalles bordados a mano. El toque cálido y acogedor que tu familia recordará por siempre.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <a href="#coleccion" class="w-full sm:w-auto bg-gradient-to-r from-navidad-red to-navidad-darkred hover:from-red-600 hover:to-red-800 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl gold-glow hover:scale-105 transition-all flex items-center justify-center space-x-3">
-                    <span>Explorar la Colección</span>
-                    <i class="fa-solid fa-arrow-down"></i>
-                </a>
-                <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20conocer%20mas%20de%20los%20munecos%20de%20navidad" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-all flex items-center justify-center space-x-3 border border-emerald-400/30">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    <span>Asesoría Personalizada</span>
-                </a>
-            </div>
-
             <!-- Value Props Badges (SIN ENVÍOS SEGUROS) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-12 text-left max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 text-left max-w-4xl mx-auto">
                 <div class="glass-dark p-4 rounded-xl flex items-center space-x-3 border-navidad-gold/20">
                     <i class="fa-solid fa-hands-holding-heart text-2xl text-navidad-gold"></i>
                     <div>
@@ -192,7 +178,7 @@
 
             <!-- Products Grid -->
             <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product items populated dynamically by JavaScript -->
+                <!-- Product items populated dynamically -->
             </div>
         </div>
     </section>
@@ -231,7 +217,7 @@
                     </div>
                 </div>
 
-                <!-- Video Showcase Player -->
+                <!-- Video Player -->
                 <div class="relative group rounded-3xl overflow-hidden border-2 border-navidad-gold/30 shadow-2xl bg-slate-900 aspect-video flex items-center justify-center">
                     <img src="https://images.unsplash.com/photo-1543589077-47d5199647ce?auto=format&fit=crop&w=1200&q=80" alt="Video Showcase Navideño" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70">
                     <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-6 space-y-4">
@@ -259,6 +245,12 @@
         </div>
     </footer>
 
+    <!-- Botón Control de Música Navideña -->
+    <button id="music-toggle" onclick="toggleMusic()" class="fixed bottom-6 left-6 z-40 bg-navidad-gold hover:bg-yellow-500 text-slate-900 font-bold px-4 py-3 rounded-full flex items-center space-x-2 shadow-2xl transition-all border-2 border-white/20">
+        <i id="music-icon" class="fa-solid fa-music"></i>
+        <span id="music-text" class="text-xs">Música Navideña [OFF]</span>
+    </button>
+
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20munecos%20de%20navidad" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-full flex items-center justify-center space-x-2 text-base font-bold shadow-2xl hover:scale-110 transition-all animate-bounce border-2 border-white/20">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
@@ -280,7 +272,6 @@
     </div>
 
     <script>
-        // Catálogo de Productos extraído del PDF
         const products = [
             {
                 id: 1,
@@ -356,7 +347,6 @@
             }
         ];
 
-        // Renderizado directo a WhatsApp con las tarjetas hermosas de Tailwind
         function renderProducts() {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = products.map(product => `
@@ -409,7 +399,24 @@
             document.getElementById('video-modal').classList.remove('flex');
         }
 
-        // Generador de Nieve Cayendo
+        // Lógica de Música Navideña
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const icon = document.getElementById('music-icon');
+            const text = document.getElementById('music-text');
+
+            if (music.paused) {
+                music.volume = 0.3; // Volumen suave ambiental
+                music.play();
+                icon.className = 'fa-solid fa-volume-high animate-bounce';
+                text.innerText = 'Música Navideña [ON]';
+            } else {
+                music.pause();
+                icon.className = 'fa-solid fa-music';
+                text.innerText = 'Música Navideña [OFF]';
+            }
+        }
+
         function createSnow() {
             const container = document.getElementById('snow-container');
             const particleCount = 35;
