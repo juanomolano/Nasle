@@ -59,11 +59,15 @@
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
         }
 
+        .gold-border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
         /* Glassmorphism utility */
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .glass-dark {
@@ -105,11 +109,10 @@
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
                     <a href="#coleccion" class="hover:text-navidad-gold transition-colors">Colección</a>
                     <a href="#detalles" class="hover:text-navidad-gold transition-colors">Ver en Video</a>
-                    <a href="https://wa.me/573137995844?text=Hola!%20Me%20interesa%20conocer%20mas%20de%20los%20munecos%20de%20navidad" target="_blank" class="text-navidad-gold hover:underline">Atención por WhatsApp</a>
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20consultar%20sobre%20los%20mu%C3%B1ecos%20navide%C3%B1os" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-lg transition-all flex items-center space-x-2">
+                    <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20los%20mu%C3%B1ecos%20navide%C3%B1os" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-emerald-900/50 transition-all flex items-center space-x-2">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                         <span class="hidden sm:inline">Preguntar por WhatsApp</span>
                     </a>
@@ -119,7 +122,8 @@
     </nav>
 
     <!-- Hero Banner -->
-    <section class="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-navidad-darkgreen via-slate-900 to-slate-950 text-white overflow-hidden py-16 px-4">
+    <section class="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-b from-navidad-darkgreen via-slate-900 to-slate-950 text-white overflow-hidden py-16 px-4">
+        <!-- Ambient Lighting Glows -->
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-navidad-red/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 right-10 w-80 h-80 bg-navidad-gold/15 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -276,7 +280,7 @@
     </div>
 
     <script>
-        // Data Catalogue extracted from your PDF
+        // Catálogo de Productos extraído del PDF
         const products = [
             {
                 id: 1,
@@ -352,7 +356,7 @@
             }
         ];
 
-        // Render Products directly to WhatsApp
+        // Renderizado directo a WhatsApp con las tarjetas hermosas de Tailwind
         function renderProducts() {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = products.map(product => `
@@ -379,7 +383,7 @@
                         </div>
                     </div>
 
-                    <div class="p-6 pt-0 space-y-2">
+                    <div class="p-6 pt-0">
                         <button onclick="directWhatsApp(${product.id})" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 rounded-xl font-bold shadow-lg flex items-center justify-center space-x-2 transition-all">
                             <i class="fa-brands fa-whatsapp text-xl"></i>
                             <span>Pedir por WhatsApp 💬</span>
@@ -405,7 +409,7 @@
             document.getElementById('video-modal').classList.remove('flex');
         }
 
-        // Snow Generator Effect
+        // Generador de Nieve Cayendo
         function createSnow() {
             const container = document.getElementById('snow-container');
             const particleCount = 35;
