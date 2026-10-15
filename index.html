@@ -271,6 +271,15 @@
         </div>
     </div>
 
+<!-- Modal de Imagen Ampliada (Lightbox Zoom) -->
+    <div id="image-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md cursor-pointer" onclick="closeImageModal()">
+        <button onclick="closeImageModal()" class="absolute top-6 right-6 z-10 bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-2xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
+        <div class="relative max-w-4xl max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <img id="modal-img-element" src="" alt="Imagen Ampliada" class="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl border-2 border-navidad-gold/40">
+            <p id="modal-img-caption" class="text-white font-serif text-xl font-bold mt-4 text-center"></p>
+        </div>
+    </div>
+
     <script>
         const products = [
             {
@@ -347,13 +356,17 @@
             }
         ];
 
+        // Renderizado de tarjetas con detector de clics para Zoom
         function renderProducts() {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = products.map(product => `
                 <div class="glass-card rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 border border-slate-200">
                     <div>
-                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2">
-                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
+                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageModal('${product.image}', '${product.name}')">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
+                                <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver Ampliada</span>
+                            </div>
                             <span class="absolute top-4 left-4 bg-navidad-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
                                 ${product.badge}
                             </span>
@@ -389,6 +402,25 @@
             window.open(`https://wa.me/573137995844?text=${message}`, '_blank');
         }
 
+        // Lógica para Abrir y Cerrar Imagen en Pantalla Completa (Zoom)
+        function openImageModal(imageSrc, title) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img-element');
+            const modalCaption = document.getElementById('modal-img-caption');
+            
+            modalImg.src = imageSrc;
+            modalCaption.innerText = title;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
         function playVideoModal() {
             document.getElementById('video-modal').classList.remove('hidden');
             document.getElementById('video-modal').classList.add('flex');
@@ -399,17 +431,19 @@
             document.getElementById('video-modal').classList.remove('flex');
         }
 
-        // Lógica de Música Navideña
         function toggleMusic() {
             const music = document.getElementById('bg-music');
             const icon = document.getElementById('music-icon');
             const text = document.getElementById('music-text');
 
             if (music.paused) {
-                music.volume = 0.3; // Volumen suave ambiental
-                music.play();
-                icon.className = 'fa-solid fa-volume-high animate-bounce';
-                text.innerText = 'Música Navideña [ON]';
+                music.volume = 0.4;
+                music.play().then(() => {
+                    icon.className = 'fa-solid fa-volume-high animate-bounce';
+                    text.innerText = 'Música Navideña [ON]';
+                }).catch(err => {
+                    console.log(err);
+                });
             } else {
                 music.pause();
                 icon.className = 'fa-solid fa-music';
