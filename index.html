@@ -86,7 +86,8 @@
 
     <!-- Audio Navideño Suave de Fondo -->
     <audio id="bg-music" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/11/27/audio_18c5e937d5.mp3?filename=christmas-background-music-128264.mp3" type="audio/mpeg">
+        <source src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Jingle_Bells_by_Kevin_MacLeod.ogg" type="audio/ogg">
+        <source src="https://ia800903.us.archive.org/27/items/JingleBells_201612/JingleBells.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Overlay de Nieve -->
@@ -271,12 +272,25 @@
         </div>
     </div>
 
-<!-- Modal de Imagen Ampliada (Lightbox Zoom) -->
-    <div id="image-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md cursor-pointer" onclick="closeImageModal()">
-        <button onclick="closeImageModal()" class="absolute top-6 right-6 z-10 bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-2xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
-        <div class="relative max-w-4xl max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-            <img id="modal-img-element" src="" alt="Imagen Ampliada" class="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl border-2 border-navidad-gold/40">
-            <p id="modal-img-caption" class="text-white font-serif text-xl font-bold mt-4 text-center"></p>
+    <!-- Modal de Imagen Ampliada con Galería y Carrusel -->
+    <div id="image-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4 backdrop-blur-md" onclick="closeImageModal()">
+        <button onclick="closeImageModal()" class="absolute top-6 right-6 z-20 bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-2xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
+        
+        <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <!-- Imagen Principal -->
+            <div class="relative w-full flex items-center justify-center">
+                <button onclick="prevModalImage()" class="absolute left-2 z-10 bg-slate-900/80 hover:bg-slate-800 text-white w-11 h-11 rounded-full flex items-center justify-center text-xl border border-slate-700 shadow-xl">❮</button>
+                <img id="modal-img-element" src="" alt="Imagen Ampliada" class="max-w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl border-2 border-navidad-gold/40">
+                <button onclick="nextModalImage()" class="absolute right-2 z-10 bg-slate-900/80 hover:bg-slate-800 text-white w-11 h-11 rounded-full flex items-center justify-center text-xl border border-slate-700 shadow-xl">❯</button>
+            </div>
+
+            <!-- Título del Muñeco -->
+            <p id="modal-img-caption" class="text-white font-serif text-xl font-bold mt-3 text-center"></p>
+
+            <!-- Tiras de Miniaturas (Thumbnails) -->
+            <div id="modal-thumbnails" class="flex gap-2 mt-4 overflow-x-auto max-w-full p-2">
+                <!-- Se generan dinámicamente con JavaScript -->
+            </div>
         </div>
     </div>
 
@@ -285,10 +299,15 @@
             {
                 id: 1,
                 name: "Trio Patas Largas x 3 und",
-                price: 180000,
+                price: 45000,
                 dimensions: "Largo 55 cm. Ancho 15 cm - c/u",
                 description: "Set x3 Muñecos Navideños 'Patas Largas' - Decoración de Chimenea y Repisas. Transforma tus espacios con este encantador conjunto navideño compuesto por Santa Claus, Muñeco de Nieve y Reno.",
                 image: "muneco_nieve_piernas_largas.jpg",
+                images: [
+                    "muneco_nieve_piernas_largas.jpg",   // Foto 1: Frente
+                    "Reno_Navideno.jpg",   // Foto 2: Segunda postura
+                    "nieve.jpg"     // Foto 3: Detalle
+                ],
                 badge: "Más Vendido"
             },
             {
@@ -356,16 +375,22 @@
             }
         ];
 
-        // Renderizado de tarjetas con detector de clics para Zoom
+        let currentGalleryImages = [];
+        let currentImageIndex = 0;
+
         function renderProducts() {
             const grid = document.getElementById('products-grid');
-            grid.innerHTML = products.map(product => `
+            grid.innerHTML = products.map(product => {
+                const imgList = product.images && product.images.length > 0 ? product.images : [product.image];
+                const imgListJson = JSON.stringify(imgList).replace(/"/g, '&quot;');
+                
+                return `
                 <div class="glass-card rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 border border-slate-200">
                     <div>
-                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageModal('${product.image}', '${product.name}')">
+                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageModal(${imgListJson}, '${product.name.replace(/'/g, "\\'")}')">
                             <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
                             <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
-                                <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver Ampliada</span>
+                                <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver varias fotos (${imgList.length})</span>
                             </div>
                             <span class="absolute top-4 left-4 bg-navidad-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
                                 ${product.badge}
@@ -393,7 +418,7 @@
                         </button>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function directWhatsApp(productId) {
@@ -402,17 +427,49 @@
             window.open(`https://wa.me/573137995844?text=${message}`, '_blank');
         }
 
-        // Lógica para Abrir y Cerrar Imagen en Pantalla Completa (Zoom)
-        function openImageModal(imageSrc, title) {
+        function openImageModal(imagesArray, title) {
+            currentGalleryImages = imagesArray;
+            currentImageIndex = 0;
+            
+            document.getElementById('modal-img-caption').innerText = title;
+            updateModalView();
+
             const modal = document.getElementById('image-modal');
-            const modalImg = document.getElementById('modal-img-element');
-            const modalCaption = document.getElementById('modal-img-caption');
-            
-            modalImg.src = imageSrc;
-            modalCaption.innerText = title;
-            
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+        }
+
+        function updateModalView() {
+            const modalImg = document.getElementById('modal-img-element');
+            const thumbnailsContainer = document.getElementById('modal-thumbnails');
+            
+            modalImg.src = currentGalleryImages[currentImageIndex];
+
+            if (currentGalleryImages.length > 1) {
+                thumbnailsContainer.innerHTML = currentGalleryImages.map((img, idx) => `
+                    <img src="${img}" onclick="selectModalImage(${idx})" class="w-16 h-16 object-cover rounded-xl cursor-pointer border-2 transition-all ${idx === currentImageIndex ? 'border-navidad-gold scale-105' : 'border-transparent opacity-60 hover:opacity-100'}" onerror="this.src='https://via.placeholder.com/100?text=Foto'">
+                `).join('');
+                thumbnailsContainer.classList.remove('hidden');
+            } else {
+                thumbnailsContainer.classList.add('hidden');
+            }
+        }
+
+        function selectModalImage(index) {
+            currentImageIndex = index;
+            updateModalView();
+        }
+
+        function nextModalImage() {
+            if (currentGalleryImages.length <= 1) return;
+            currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+            updateModalView();
+        }
+
+        function prevModalImage() {
+            if (currentGalleryImages.length <= 1) return;
+            currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            updateModalView();
         }
 
         function closeImageModal() {
