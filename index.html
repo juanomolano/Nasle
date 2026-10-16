@@ -231,7 +231,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-12">
         <div class="max-w-7xl mx-auto px-4 text-center space-y-6">
@@ -258,16 +258,15 @@
         <span>💬 Pregúntame o pide acá</span>
     </a>
 
-    <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
-        <div class="relative w-full max-w-3xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700">
-            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl">&times;</button>
-            <div class="aspect-video bg-black flex items-center justify-center text-center p-8">
-                <div class="space-y-4">
-                    <i class="fa-solid fa-film text-5xl text-navidad-gold animate-pulse"></i>
-                    <p class="text-white font-medium text-lg">Aquí puedes vincular tus videos promocionales de los muñecos (MP4 o YouTube Shorts).</p>
-                    <p class="text-xs text-slate-400">Demostración en vivo de textura, acabados y mecanismo de estiramiento.</p>
-                </div>
+<!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md">
+        <div class="relative w-full max-w-4xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
+            <!-- Botón de Cerrar -->
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>            
+            
+            <!-- Reproductor de YouTube embebido -->
+            <div class="aspect-video bg-black flex items-center justify-center">
+                <iframe id="youtube-iframe" class="w-full h-full" src="https://www.youtube.com/embed/J5zHUcw9A9Y" title="Demostración Muñecos Navideños" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -601,17 +600,24 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
-
-        function playVideoModal() {
-            document.getElementById('video-modal').classList.remove('hidden');
-            document.getElementById('video-modal').classList.add('flex');
+function playVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+            // Carga el video con reproduccion automatica
+            iframe.src = "https://www.youtube.com/embed/J5zHUcw9A9Y?autoplay=1";
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
 
         function closeVideoModal() {
-            document.getElementById('video-modal').classList.add('hidden');
-            document.getElementById('video-modal').classList.remove('flex');
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+            // Limpia el src para pausar el sonido del video al cerrar
+            iframe.src = "";
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
         }
-
+        
         function toggleMusic() {
             const music = document.getElementById('bg-music');
             const icon = document.getElementById('music-icon');
