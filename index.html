@@ -97,14 +97,13 @@
     <nav class="sticky top-0 z-40 bg-navidad-darkgreen/90 backdrop-blur-md border-b border-navidad-gold/20 text-white transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- CÓDIGO CON TU LOGO -->
-<div class="flex items-center space-x-3">
-    <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-full border border-navidad-gold/40 shadow-md">
-    <div>
-        <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
-        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva</span>
-    </div>
-</div>
+                <div class="flex items-center space-x-3">
+                    <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-full border border-navidad-gold/40 shadow-md" onerror="this.outerHTML='<span class=\'text-3xl text-navidad-gold\'><i class=\'fa-solid fa-sleigh\'></i></span>'">
+                    <div>
+                        <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
+                        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva</span>
+                    </div>
+                </div>
 
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
                     <a href="#coleccion" class="hover:text-navidad-gold transition-colors">Colección</a>
@@ -112,7 +111,7 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <a href="https://wa.me/573158749206?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20los%20mu%C3%B1ecos%20navide%C3%B1os" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-emerald-900/50 transition-all flex items-center space-x-2">
+                    <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20los%20mu%C3%B1ecos%20navide%C3%B1os" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-emerald-900/50 transition-all flex items-center space-x-2">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                         <span class="hidden sm:inline">Preguntar por WhatsApp</span>
                     </a>
@@ -236,9 +235,9 @@
     <!-- Footer -->
     <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-12">
         <div class="max-w-7xl mx-auto px-4 text-center space-y-6">
-            <div class="flex justify-center items-center space-x-2 text-2xl font-serif text-white">
-                <i class="fa-solid fa-gift text-navidad-red"></i>
-                <span>Navidad Artesanal</span>
+            <div class="flex flex-col items-center justify-center space-y-2">
+                <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-16 w-16 object-contain rounded-full border-2 border-navidad-gold/30 shadow-lg" onerror="this.outerHTML='<i class=\'fa-solid fa-gift text-navidad-red text-3xl\'></i>'">
+                <span class="font-serif text-2xl text-white font-bold tracking-wide">Navidad Artesanal</span>
             </div>
             <p class="text-sm max-w-md mx-auto">Creando recuerdos inolvidables para las familias colombianas cada Navidad.</p>
             <div class="text-xs text-slate-500 pt-6">
@@ -254,45 +253,42 @@
     </button>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/573158749206?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20munecos%20de%20navidad" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-full flex items-center justify-center space-x-2 text-base font-bold shadow-2xl hover:scale-110 transition-all animate-bounce border-2 border-white/20">
+    <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20munecos%20de%20navidad" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-full flex items-center justify-center space-x-2 text-base font-bold shadow-2xl hover:scale-110 transition-all animate-bounce border-2 border-white/20">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
         <span>💬 Pregúntame o pide acá</span>
     </a>
 
-    <!-- Video Modal Adaptado a Celular -->
+    <!-- Video Modal Adaptado a Celular (Demostración General) -->
     <div id="video-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 sm:p-4 backdrop-blur-md" onclick="closeVideoModal()">
         <div class="relative w-full max-w-5xl max-h-[92vh] bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl p-2 sm:p-4 flex flex-col items-center" onclick="event.stopPropagation()">
-            <!-- Botón de Cerrar Flotante -->
             <button onclick="closeVideoModal()" class="absolute top-3 right-3 z-20 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl border border-slate-600 hover:bg-slate-700 transition-all shadow-lg">&times;</button>
-            
             <h4 id="video-modal-title" class="text-white font-serif text-lg sm:text-xl font-bold mb-2 text-center pr-10 pl-2"></h4>
-            
-            <!-- Contenedor dinámico que se expande vertical y horizontalmente -->
             <div class="w-full h-[70vh] sm:h-[78vh] bg-black flex items-center justify-center rounded-xl overflow-hidden">
                 <video id="modal-video-player" controls muted playsinline class="w-full h-full object-contain"></video>
             </div>
         </div>
     </div>
     
-    <!-- Modal de Imagen Ampliada con Galería y Carrusel -->
-    <div id="image-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4 backdrop-blur-md" onclick="closeImageModal()">
-        <button onclick="closeImageModal()" class="absolute top-6 right-6 z-20 bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-2xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
+    <!-- Modal de Imagen Ampliada con Galería, Video y Carrusel -->
+    <div id="image-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 sm:p-4 backdrop-blur-md" onclick="closeImageModal()">
+        <button onclick="closeImageModal()" class="absolute top-4 right-4 z-20 bg-slate-800 text-white w-11 h-11 rounded-full flex items-center justify-center text-2xl shadow-2xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
         
-        <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-            <!-- Imagen Principal -->
-            <div class="relative w-full flex items-center justify-center">
+        <div class="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <!-- Visor Principal Dinámico (Imagen o Video) -->
+            <div class="relative w-full flex items-center justify-center min-h-[50vh] max-h-[70vh]">
                 <button onclick="prevModalImage()" class="absolute left-2 z-10 bg-slate-900/80 hover:bg-slate-800 text-white w-11 h-11 rounded-full flex items-center justify-center text-xl border border-slate-700 shadow-xl">❮</button>
-                <img id="modal-img-element" src="" alt="Imagen Ampliada" class="max-w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl border-2 border-navidad-gold/40">
+                
+                <img id="modal-img-element" src="" alt="Elemento Ampliado" class="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl border-2 border-navidad-gold/40">
+                <video id="modal-gallery-video" controls muted playsinline class="max-w-full max-h-[70vh] rounded-2xl shadow-2xl border-2 border-navidad-gold/40 hidden"></video>
+                
                 <button onclick="nextModalImage()" class="absolute right-2 z-10 bg-slate-900/80 hover:bg-slate-800 text-white w-11 h-11 rounded-full flex items-center justify-center text-xl border border-slate-700 shadow-xl">❯</button>
             </div>
 
             <!-- Título del Muñeco -->
-            <p id="modal-img-caption" class="text-white font-serif text-xl font-bold mt-3 text-center"></p>
+            <p id="modal-img-caption" class="text-white font-serif text-lg sm:text-xl font-bold mt-3 text-center"></p>
 
-            <!-- Tiras de Miniaturas (Thumbnails) -->
-            <div id="modal-thumbnails" class="flex gap-2 mt-4 overflow-x-auto max-w-full p-2">
-                <!-- Se generan dinámicamente con JavaScript -->
-            </div>
+            <!-- Tiras de Miniaturas -->
+            <div id="modal-thumbnails" class="flex gap-2 mt-3 overflow-x-auto max-w-full p-2"></div>
         </div>
     </div>
 
@@ -417,6 +413,20 @@
                 badge: "Tierno y Único"
             },
             {
+                id: 9,
+                name: "Papá Noel Sombrero",
+                price: 80000,
+                dimensions: "Largo 73 cm x Ancho 30 cm",
+                description: "🎩🎄 Elegante Papá Noel con sombrero estilizado y atuendo afelpado. Gran presencia para engalanar muebles de sala, pasillos o pies de árbol.",
+                image: "papa_noel_sombrero_1.jpg",
+                images: [
+                    "papa_noel_sombrero_1.jpg",
+                    "papa_noel_sombrero_2.jpg",
+                    "papa_noel_sombrero_3.jpg"
+                ],
+                badge: "Elegante"
+            },
+            {
                 id: 10,
                 name: "Papá Noel Federico",
                 price: 180000,
@@ -496,32 +506,17 @@
         function renderProducts() {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = products.map(product => {
-                const isVideo = Boolean(product.video);
                 const imgList = product.images && product.images.length > 0 ? product.images : [product.image];
                 const imgListJson = JSON.stringify(imgList).replace(/"/g, '&quot;');
                 
-                const clickAction = isVideo 
-                    ? `openProductVideo('${product.video}', '${product.name.replace(/'/g, "\\'")}')`
-                    : `openImageModal(${imgListJson}, '${product.name.replace(/'/g, "\\'")}')`;
-
-                const mediaPreview = isVideo 
-                    ? `<video src="${product.video}" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()" class="w-full h-full object-contain rounded-2xl"></video>
-                       <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center rounded-2xl group-hover:bg-black/10 transition-colors">
-                           <div class="w-14 h-14 bg-navidad-red text-white rounded-full flex items-center justify-center text-xl shadow-lg border-2 border-white/40 group-hover:scale-110 transition-transform">
-                               <i class="fa-solid fa-play ml-1"></i>
-                           </div>
-                           <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1 rounded-full border border-navidad-gold/40 font-medium mt-2">🎬 Tocar para reproducir</span>
-                       </div>`
-                    : `<img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
-                       <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
-                           <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver varias fotos (${imgList.length})</span>
-                       </div>`;
-
                 return `
                 <div class="glass-card rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 border border-slate-200">
                     <div>
-                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="${clickAction}">
-                            ${mediaPreview}
+                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageModal(${imgListJson}, '${product.name.replace(/'/g, "\\'")}')">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
+                                <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver detalle (${imgList.length})</span>
+                            </div>
                             <span class="absolute top-4 left-4 bg-navidad-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
                                 ${product.badge}
                             </span>
@@ -554,7 +549,7 @@
         function directWhatsApp(productId) {
             const product = products.find(p => p.id === productId);
             const message = `Hola!%20Me%20interesa%20comprar%20el%20muñeco:%20*${encodeURIComponent(product.name)}*%20($${product.price.toLocaleString('es-CO')}%20COP).%20¿Tienen%20disponibilidad?`;
-            window.open(`https://wa.me/573158749206?text=${message}`, '_blank');
+            window.open(`https://wa.me/573137995844?text=${message}`, '_blank');
         }
 
         function openImageModal(imagesArray, title) {
@@ -571,14 +566,43 @@
 
         function updateModalView() {
             const modalImg = document.getElementById('modal-img-element');
+            const modalVideo = document.getElementById('modal-gallery-video');
             const thumbnailsContainer = document.getElementById('modal-thumbnails');
-            
-            modalImg.src = currentGalleryImages[currentImageIndex];
+            const currentItem = currentGalleryImages[currentImageIndex];
+            const isVideoItem = currentItem.endsWith('.mp4');
+
+            modalVideo.pause();
+
+            if (isVideoItem) {
+                modalImg.classList.add('hidden');
+                modalVideo.src = currentItem;
+                modalVideo.muted = true;
+                modalVideo.classList.remove('hidden');
+                modalVideo.play();
+            } else {
+                modalVideo.classList.add('hidden');
+                modalVideo.src = "";
+                modalImg.src = currentItem;
+                modalImg.classList.remove('hidden');
+            }
 
             if (currentGalleryImages.length > 1) {
-                thumbnailsContainer.innerHTML = currentGalleryImages.map((img, idx) => `
-                    <img src="${img}" onclick="selectModalImage(${idx})" class="w-16 h-16 object-cover rounded-xl cursor-pointer border-2 transition-all ${idx === currentImageIndex ? 'border-navidad-gold scale-105' : 'border-transparent opacity-60 hover:opacity-100'}" onerror="this.src='https://via.placeholder.com/100?text=Foto'">
-                `).join('');
+                thumbnailsContainer.innerHTML = currentGalleryImages.map((item, idx) => {
+                    const isVid = item.endsWith('.mp4');
+                    const activeBorder = idx === currentImageIndex ? 'border-navidad-gold scale-105' : 'border-transparent opacity-60 hover:opacity-100';
+                    
+                    if (isVid) {
+                        return `
+                            <div onclick="selectModalImage(${idx})" class="w-16 h-16 bg-slate-800 text-navidad-gold rounded-xl cursor-pointer border-2 flex flex-col items-center justify-center text-xs font-bold transition-all ${activeBorder}">
+                                <i class="fa-solid fa-play text-base"></i>
+                                <span>Video</span>
+                            </div>
+                        `;
+                    }
+                    return `
+                        <img src="${item}" onclick="selectModalImage(${idx})" class="w-16 h-16 object-cover rounded-xl cursor-pointer border-2 transition-all ${activeBorder}" onerror="this.src='https://via.placeholder.com/100?text=Foto'">
+                    `;
+                }).join('');
                 thumbnailsContainer.classList.remove('hidden');
             } else {
                 thumbnailsContainer.classList.add('hidden');
@@ -604,34 +628,31 @@
 
         function closeImageModal() {
             const modal = document.getElementById('image-modal');
+            const modalVideo = document.getElementById('modal-gallery-video');
+            if (modalVideo) {
+                modalVideo.pause();
+                modalVideo.src = "";
+            }
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
 
-        // Abre el video propio de un producto (como Federico)
-        function openProductVideo(videoSrc, title) {
+        function playVideoModal() {
             const modal = document.getElementById('video-modal');
             const video = document.getElementById('modal-video-player');
             const titleElement = document.getElementById('video-modal-title');
             
-            if (titleElement) titleElement.innerText = title;
+            if (titleElement) titleElement.innerText = "Demostración de Muñecos Navideños";
             if (video) {
-                video.src = videoSrc;
+                video.src = "federico.mp4";
                 video.muted = true;
                 video.currentTime = 0;
                 video.play();
             }
-            
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
 
-        // Abre el video demostrativo general
-        function playVideoModal() {
-            openProductVideo('federico.mp4', 'Demostración de Muñecos Navideños');
-        }
-
-        // Cierra y detiene la reproducción del video
         function closeVideoModal() {
             const modal = document.getElementById('video-modal');
             const video = document.getElementById('modal-video-player');
