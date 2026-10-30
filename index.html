@@ -139,7 +139,7 @@
                 Diseños exclusivos confeccionados con amor, acabados de lujo y detalles bordados a mano. El toque cálido y acogedor que tu familia recordará por siempre.
             </p>
 
-            <!-- Value Props Badges (SIN ENVÍOS SEGUROS) -->
+            <!-- Value Props Badges -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 text-left max-w-4xl mx-auto">
                 <div class="glass-dark p-4 rounded-xl flex items-center space-x-3 border-navidad-gold/20">
                     <i class="fa-solid fa-hands-holding-heart text-2xl text-navidad-gold"></i>
@@ -184,7 +184,7 @@
         </div>
     </section>
 
-<!-- Video Showcase Section -->
+    <!-- Video Showcase Section -->
     <section id="detalles" class="py-20 bg-gradient-to-b from-slate-950 via-navidad-darkgreen/40 to-slate-950 text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -258,19 +258,17 @@
         <span>💬 Pregúntame o pide acá</span>
     </a>
 
-<!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md">
-        <div class="relative w-full max-w-4xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
-            <!-- Botón de Cerrar -->
-            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>            
-            
-            <!-- Reproductor de YouTube embebido -->
-            <div class="aspect-video bg-black flex items-center justify-center">
-                <iframe id="youtube-iframe" class="w-full h-full" src="https://www.youtube.com/embed/J5zHUcw9A9Y" title="Demostración Muñecos Navideños" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md" onclick="closeVideoModal()">
+        <div class="relative w-full max-w-4xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl p-4 flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
+            <h4 id="video-modal-title" class="text-white font-serif text-xl font-bold mb-3"></h4>
+            <div class="aspect-video w-full bg-black flex items-center justify-center rounded-xl overflow-hidden">
+                <video id="modal-video-player" controls muted playsinline class="w-full h-full object-contain"></video>
             </div>
         </div>
     </div>
-
+    
     <!-- Modal de Imagen Ampliada con Galería y Carrusel -->
     <div id="image-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-4 backdrop-blur-md" onclick="closeImageModal()">
         <button onclick="closeImageModal()" class="absolute top-6 right-6 z-20 bg-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-2xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
@@ -419,13 +417,8 @@
                 price: 180000,
                 dimensions: "Tamaño Estándar Grande",
                 description: "🎅🏼🎁 Exclusivo diseño artesanal 'Federico' confeccionado con finos materiales, bordados dorados y expresividad única hecha a mano. ✨",
-                image: "papa_noel_federico_1.jpg",
-                images: [
-                    "papa_noel_federico_1.jpg",
-                    "papa_noel_federico_2.jpg",
-                    "papa_noel_federico_3.jpg"
-                ],
-                badge: "Edición Limitada"
+                video: "federico.mp4",
+                badge: "🎬 Video Disponible"
             },
             {
                 id: 11,
@@ -494,17 +487,32 @@
         function renderProducts() {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = products.map(product => {
+                const isVideo = Boolean(product.video);
                 const imgList = product.images && product.images.length > 0 ? product.images : [product.image];
                 const imgListJson = JSON.stringify(imgList).replace(/"/g, '&quot;');
                 
+                const clickAction = isVideo 
+                    ? `openProductVideo('${product.video}', '${product.name.replace(/'/g, "\\'")}')`
+                    : `openImageModal(${imgListJson}, '${product.name.replace(/'/g, "\\'")}')`;
+
+                const mediaPreview = isVideo 
+                    ? `<video src="${product.video}" muted playsinline loop onmouseover="this.play()" onmouseout="this.pause()" class="w-full h-full object-contain rounded-2xl"></video>
+                       <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center rounded-2xl group-hover:bg-black/10 transition-colors">
+                           <div class="w-14 h-14 bg-navidad-red text-white rounded-full flex items-center justify-center text-xl shadow-lg border-2 border-white/40 group-hover:scale-110 transition-transform">
+                               <i class="fa-solid fa-play ml-1"></i>
+                           </div>
+                           <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1 rounded-full border border-navidad-gold/40 font-medium mt-2">🎬 Tocar para reproducir</span>
+                       </div>`
+                    : `<img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
+                       <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
+                           <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver varias fotos (${imgList.length})</span>
+                       </div>`;
+
                 return `
                 <div class="glass-card rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 border border-slate-200">
                     <div>
-                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageModal(${imgListJson}, '${product.name.replace(/'/g, "\\'")}')">
-                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
-                                <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver varias fotos (${imgList.length})</span>
-                            </div>
+                        <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="${clickAction}">
+                            ${mediaPreview}
                             <span class="absolute top-4 left-4 bg-navidad-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md z-10">
                                 ${product.badge}
                             </span>
@@ -590,20 +598,38 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
-function playVideoModal() {
+
+        // Abre el video propio de un producto (como Federico)
+        function openProductVideo(videoSrc, title) {
             const modal = document.getElementById('video-modal');
-            const iframe = document.getElementById('youtube-iframe');
-            // Carga el video con reproduccion automatica
-            iframe.src = "https://www.youtube.com/embed/J5zHUcw9A9Y?autoplay=1";
+            const video = document.getElementById('modal-video-player');
+            const titleElement = document.getElementById('video-modal-title');
+            
+            if (titleElement) titleElement.innerText = title;
+            if (video) {
+                video.src = videoSrc;
+                video.muted = true;
+                video.currentTime = 0;
+                video.play();
+            }
+            
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
 
+        // Abre el video demostrativo general
+        function playVideoModal() {
+            openProductVideo('federico.mp4', 'Demostración de Muñecos Navideños');
+        }
+
+        // Cierra y detiene la reproducción del video
         function closeVideoModal() {
             const modal = document.getElementById('video-modal');
-            const iframe = document.getElementById('youtube-iframe');
-            // Limpia el src para pausar el sonido del video al cerrar
-            iframe.src = "";
+            const video = document.getElementById('modal-video-player');
+            if (video) {
+                video.pause();
+                video.src = "";
+            }
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
