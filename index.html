@@ -97,13 +97,14 @@
     <nav class="sticky top-0 z-40 bg-navidad-darkgreen/90 backdrop-blur-md border-b border-navidad-gold/20 text-white transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-3">
-                    <span class="text-3xl text-navidad-gold"><i class="fa-solid fa-sleigh"></i></span>
-                    <div>
-                        <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
-                        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva</span>
-                    </div>
-                </div>
+                <!-- CÓDIGO CON TU LOGO -->
+<div class="flex items-center space-x-3">
+    <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-12 w-12 sm:h-14 sm:w-14 object-contain rounded-full border border-navidad-gold/40 shadow-md">
+    <div>
+        <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
+        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva</span>
+    </div>
+</div>
 
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
                     <a href="#coleccion" class="hover:text-navidad-gold transition-colors">Colección</a>
@@ -111,7 +112,7 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20los%20mu%C3%B1ecos%20navide%C3%B1os" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-emerald-900/50 transition-all flex items-center space-x-2">
+                    <a href="https://wa.me/573158749206?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20los%20mu%C3%B1ecos%20navide%C3%B1os" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-emerald-900/50 transition-all flex items-center space-x-2">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                         <span class="hidden sm:inline">Preguntar por WhatsApp</span>
                     </a>
@@ -253,17 +254,21 @@
     </button>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/573137995844?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20munecos%20de%20navidad" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-full flex items-center justify-center space-x-2 text-base font-bold shadow-2xl hover:scale-110 transition-all animate-bounce border-2 border-white/20">
+    <a href="https://wa.me/573158749206?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20munecos%20de%20navidad" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-full flex items-center justify-center space-x-2 text-base font-bold shadow-2xl hover:scale-110 transition-all animate-bounce border-2 border-white/20">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
         <span>💬 Pregúntame o pide acá</span>
     </a>
 
-    <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md" onclick="closeVideoModal()">
-        <div class="relative w-full max-w-4xl bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl p-4 flex flex-col items-center" onclick="event.stopPropagation()">
-            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl border border-slate-600 hover:bg-slate-700 transition-all">&times;</button>
-            <h4 id="video-modal-title" class="text-white font-serif text-xl font-bold mb-3"></h4>
-            <div class="aspect-video w-full bg-black flex items-center justify-center rounded-xl overflow-hidden">
+    <!-- Video Modal Adaptado a Celular -->
+    <div id="video-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 sm:p-4 backdrop-blur-md" onclick="closeVideoModal()">
+        <div class="relative w-full max-w-5xl max-h-[92vh] bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl p-2 sm:p-4 flex flex-col items-center" onclick="event.stopPropagation()">
+            <!-- Botón de Cerrar Flotante -->
+            <button onclick="closeVideoModal()" class="absolute top-3 right-3 z-20 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl border border-slate-600 hover:bg-slate-700 transition-all shadow-lg">&times;</button>
+            
+            <h4 id="video-modal-title" class="text-white font-serif text-lg sm:text-xl font-bold mb-2 text-center pr-10 pl-2"></h4>
+            
+            <!-- Contenedor dinámico que se expande vertical y horizontalmente -->
+            <div class="w-full h-[70vh] sm:h-[78vh] bg-black flex items-center justify-center rounded-xl overflow-hidden">
                 <video id="modal-video-player" controls muted playsinline class="w-full h-full object-contain"></video>
             </div>
         </div>
@@ -417,8 +422,12 @@
                 price: 180000,
                 dimensions: "Tamaño Estándar Grande",
                 description: "🎅🏼🎁 Exclusivo diseño artesanal 'Federico' confeccionado con finos materiales, bordados dorados y expresividad única hecha a mano. ✨",
-                video: "federico.mp4",
-                badge: "🎬 Video Disponible"
+                image: "federico1.jpeg",
+                images: [
+                    "federico1.jpeg",
+                    "federico.mp4"
+                ],
+                badge: "Foto + Video 🎬"
             },
             {
                 id: 11,
@@ -545,7 +554,7 @@
         function directWhatsApp(productId) {
             const product = products.find(p => p.id === productId);
             const message = `Hola!%20Me%20interesa%20comprar%20el%20muñeco:%20*${encodeURIComponent(product.name)}*%20($${product.price.toLocaleString('es-CO')}%20COP).%20¿Tienen%20disponibilidad?`;
-            window.open(`https://wa.me/573137995844?text=${message}`, '_blank');
+            window.open(`https://wa.me/573158749206?text=${message}`, '_blank');
         }
 
         function openImageModal(imagesArray, title) {
