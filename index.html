@@ -84,12 +84,6 @@
 </head>
 <body class="font-sans bg-slate-900 text-slate-800 antialiased overflow-x-hidden selection:bg-navidad-red selection:text-white">
 
-    <!-- Audio Navideño Suave de Fondo -->
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Jingle_Bells_by_Kevin_MacLeod.ogg" type="audio/ogg">
-        <source src="https://ia800903.us.archive.org/27/items/JingleBells_201612/JingleBells.mp3" type="audio/mpeg">
-    </audio>
-
     <!-- Overlay de Nieve -->
     <div id="snow-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
@@ -98,16 +92,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center space-x-4 py-1">
-    <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-16 w-16 sm:h-20 sm:w-20 object-contain rounded-full border-2 border-navidad-gold/60 shadow-lg p-0.5 bg-slate-900/50" onerror="this.outerHTML='<span class=\'text-3xl text-navidad-gold\'><i class=\'fa-solid fa-sleigh\'></i></span>'">
-    <div>
-        <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
-        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva</span>
-    </div>
-</div>
+                    <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-16 w-16 sm:h-20 sm:w-20 object-contain rounded-full border-2 border-navidad-gold/60 shadow-lg p-0.5 bg-slate-900/50" onerror="this.outerHTML='<span class=\'text-3xl text-navidad-gold\'><i class=\'fa-solid fa-sleigh\'></i></span>'">
+                    <div>
+                        <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white block leading-none">NAVIDAD<span class="text-navidad-gold">ARTESANAL</span></span>
+                        <span class="text-xs text-navidad-lightgold tracking-widest uppercase">Colección Exclusiva</span>
+                    </div>
+                </div>
 
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
                     <a href="#coleccion" class="hover:text-navidad-gold transition-colors">Colección</a>
-                    <a href="#detalles" class="hover:text-navidad-gold transition-colors">Ver en Video</a>
+                    <a href="#detalles" class="hover:text-navidad-gold transition-colors">Nuestra Calidad</a>
                 </div>
 
                 <div class="flex items-center space-x-4">
@@ -152,7 +146,7 @@
                     <i class="fa-solid fa-gem text-2xl text-navidad-gold"></i>
                     <div>
                         <h4 class="font-bold text-sm text-white">Materiales De Lujo</h4>
-                        <p class="text-xs text-slate-300">Teladas e hilos finos</p>
+                        <p class="text-xs text-slate-300">Telas e hilos finos</p>
                     </div>
                 </div>
                 <div class="glass-dark p-4 rounded-xl flex items-center space-x-3 border-navidad-gold/20">
@@ -184,12 +178,13 @@
         </div>
     </section>
 
-    <!-- Video Showcase Section -->
+    <!-- Sección de Calidad y Cierre de Ventas (Sin YouTube, 100% Marketing) -->
     <section id="detalles" class="py-20 bg-gradient-to-b from-slate-950 via-navidad-darkgreen/40 to-slate-950 text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Textos de Calidad y Valor -->
                 <div class="space-y-6">
-                    <span class="text-navidad-gold font-semibold text-sm uppercase tracking-wider">Demostración en Vivo</span>
+                    <span class="text-navidad-gold font-semibold text-sm uppercase tracking-wider">Compromiso Artesanal</span>
                     <h2 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">Siente la Calidad y el Detalle en Cada Costura</h2>
                     <p class="text-slate-300 text-lg leading-relaxed">
                         Nuestros personajes cuentan con confección 100% artesanal, telas seleccionadas ultra suaves, acabados bordados a mano y detalles llenos de magia para vestir de calidez cada rincón de tu hogar.
@@ -218,15 +213,37 @@
                     </div>
                 </div>
 
-                <!-- Video Player -->
-                <div class="relative group rounded-3xl overflow-hidden border-2 border-navidad-gold/30 shadow-2xl bg-slate-900 aspect-video flex items-center justify-center">
-                    <img src="https://images.unsplash.com/photo-1543589077-47d5199647ce?auto=format&fit=crop&w=1200&q=80" alt="Video Showcase Navideño" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70">
-                    <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-6 space-y-4">
-                        <button onclick="playVideoModal()" class="w-20 h-20 bg-navidad-red hover:bg-red-600 text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition-all gold-glow">
-                            <i class="fa-solid fa-play ml-1"></i>
-                        </button>
-                        <span class="font-serif font-bold text-xl text-white">Ver Detalles en Video HD</span>
+                <!-- Tarjeta Comercial de Cierre / Conversión Rápida -->
+                <div class="glass-dark rounded-3xl p-8 sm:p-10 border-2 border-navidad-gold/40 shadow-2xl relative overflow-hidden flex flex-col justify-between space-y-6">
+                    <div class="absolute -top-10 -right-10 w-44 h-44 bg-navidad-red/25 rounded-full blur-2xl pointer-events-none"></div>
+
+                    <div class="space-y-3">
+                        <div class="inline-flex items-center space-x-2 bg-navidad-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            <span>🔥 Pocas Unidades por Modelo</span>
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white leading-tight">
+                            ¿Quieres decorar tu casa con piezas únicas esta Navidad?
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Al ser piezas 100% hechas a mano, cada muñeco tiene producción limitada. ¡Escríbenos directamente para asesorarte, enviarte más fotos y apartar tus favoritos antes de que se agoten!
+                        </p>
                     </div>
+
+                    <div class="grid grid-cols-2 gap-3 py-2 text-xs">
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-navidad-gold/20 flex items-center space-x-2">
+                            <i class="fa-solid fa-gift text-navidad-gold text-base"></i>
+                            <span class="text-slate-200">Listos para regalar</span>
+                        </div>
+                        <div class="bg-slate-900/60 p-3 rounded-xl border border-navidad-gold/20 flex items-center space-x-2">
+                            <i class="fa-solid fa-comments text-emerald-400 text-base"></i>
+                            <span class="text-slate-200">Atención personalizada</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/573158749206?text=Hola!%20Quiero%20apartar%20mis%20muñecos%20navideños%20antes%20de%20que%20se%20agoten%20🎅🎁" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-xl flex items-center justify-center space-x-3 transition-all hover:scale-[1.02] text-base">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Apartar mi Muñeco por WhatsApp 💬</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -236,7 +253,7 @@
     <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-12">
         <div class="max-w-7xl mx-auto px-4 text-center space-y-6">
             <div class="flex flex-col items-center justify-center space-y-2">
-                <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-16 w-16 object-contain rounded-full border-2 border-navidad-gold/30 shadow-lg" onerror="this.outerHTML='<i class=\'fa-solid fa-gift text-navidad-red text-3xl\'></i>'">
+                <img src="logo.jpeg" alt="Logo Navidad Artesanal" class="h-24 w-24 sm:h-28 sm:w-28 object-contain rounded-full border-2 border-navidad-gold/50 shadow-xl p-1 bg-slate-950/60" onerror="this.outerHTML='<i class=\'fa-solid fa-gift text-navidad-red text-3xl\'></i>'">
                 <span class="font-serif text-2xl text-white font-bold tracking-wide">Navidad Artesanal</span>
             </div>
             <p class="text-sm max-w-md mx-auto">Creando recuerdos inolvidables para las familias colombianas cada Navidad.</p>
@@ -246,28 +263,11 @@
         </div>
     </footer>
 
-    <!-- Botón Control de Música Navideña -->
-    <button id="music-toggle" onclick="toggleMusic()" class="fixed bottom-6 left-6 z-40 bg-navidad-gold hover:bg-yellow-500 text-slate-900 font-bold px-4 py-3 rounded-full flex items-center space-x-2 shadow-2xl transition-all border-2 border-white/20">
-        <i id="music-icon" class="fa-solid fa-music"></i>
-        <span id="music-text" class="text-xs">Música Navideña [OFF]</span>
-    </button>
-
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/573158749206?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20munecos%20de%20navidad" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-full flex items-center justify-center space-x-2 text-base font-bold shadow-2xl hover:scale-110 transition-all animate-bounce border-2 border-white/20">
         <i class="fa-brands fa-whatsapp text-2xl"></i>
         <span>💬 Pregúntame o pide acá</span>
     </a>
-
-    <!-- Video Modal Adaptado a Celular (Demostración General) -->
-    <div id="video-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 sm:p-4 backdrop-blur-md" onclick="closeVideoModal()">
-        <div class="relative w-full max-w-5xl max-h-[92vh] bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl p-2 sm:p-4 flex flex-col items-center" onclick="event.stopPropagation()">
-            <button onclick="closeVideoModal()" class="absolute top-3 right-3 z-20 bg-slate-800 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl border border-slate-600 hover:bg-slate-700 transition-all shadow-lg">&times;</button>
-            <h4 id="video-modal-title" class="text-white font-serif text-lg sm:text-xl font-bold mb-2 text-center pr-10 pl-2"></h4>
-            <div class="w-full h-[70vh] sm:h-[78vh] bg-black flex items-center justify-center rounded-xl overflow-hidden">
-                <video id="modal-video-player" controls muted playsinline class="w-full h-full object-contain"></video>
-            </div>
-        </div>
-    </div>
     
     <!-- Modal de Imagen Ampliada con Galería, Video y Carrusel -->
     <div id="image-modal" class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 sm:p-4 backdrop-blur-md" onclick="closeImageModal()">
@@ -424,7 +424,7 @@
                     "federico.mp4"
                 ],
                 badge: "⭐ NUEVA COLECCIÓN 2026",
-                featured: true // Marca especial de producto estrella
+                featured: true
             },
             {
                 id: 11,
@@ -496,7 +496,6 @@
                 const imgList = product.images && product.images.length > 0 ? product.images : [product.image];
                 const imgListJson = JSON.stringify(imgList).replace(/"/g, '&quot;');
                 
-                // Efecto especial para la Nueva Colección (Federico)
                 const isFeatured = Boolean(product.featured);
                 const cardBorder = isFeatured 
                     ? 'ring-2 ring-navidad-gold shadow-[0_0_25px_rgba(212,175,55,0.35)] relative scale-[1.02]' 
@@ -635,53 +634,6 @@
             }
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-        }
-
-        function playVideoModal() {
-            const modal = document.getElementById('video-modal');
-            const video = document.getElementById('modal-video-player');
-            const titleElement = document.getElementById('video-modal-title');
-            
-            if (titleElement) titleElement.innerText = "Demostración de Muñecos Navideños";
-            if (video) {
-                video.src = "federico.mp4";
-                video.muted = true;
-                video.currentTime = 0;
-                video.play();
-            }
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeVideoModal() {
-            const modal = document.getElementById('video-modal');
-            const video = document.getElementById('modal-video-player');
-            if (video) {
-                video.pause();
-                video.src = "";
-            }
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-        
-        function toggleMusic() {
-            const music = document.getElementById('bg-music');
-            const icon = document.getElementById('music-icon');
-            const text = document.getElementById('music-text');
-
-            if (music.paused) {
-                music.volume = 0.4;
-                music.play().then(() => {
-                    icon.className = 'fa-solid fa-volume-high animate-bounce';
-                    text.innerText = 'Música Navideña [ON]';
-                }).catch(err => {
-                    console.log(err);
-                });
-            } else {
-                music.pause();
-                icon.className = 'fa-solid fa-music';
-                text.innerText = 'Música Navideña [OFF]';
-            }
         }
 
         function createSnow() {
