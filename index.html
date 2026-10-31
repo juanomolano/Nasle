@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navidad Mágica - Muñecos Artesanales Hechos a Mano</title>
     
-<!-- Metadatos de Vista Previa para WhatsApp y Redes Sociales (Open Graph) -->
+    <!-- Metadatos de Vista Previa para WhatsApp y Redes Sociales (Open Graph) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="🎅 Azalia Artesanal | Muñecos Hechos a Mano 🎄">
     <meta property="og:description" content="Colección exclusiva de muñecos navideños 100% artesanales con acabados de lujo. Mira el catálogo y aparta el tuyo por WhatsApp.">
     <meta property="og:image" content="https://azaliaartesanal.github.io/Catalogo/logo.jpeg">
+    <meta property="og:image:secure_url" content="https://azaliaartesanal.github.io/Catalogo/logo.jpeg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -334,8 +335,8 @@
                 images: [
                     "Suicherosf.jpeg",
                     "Suicheros1.jpeg",
-                    "Suicheros2.jpeg",
-        ],
+                    "Suicheros2.jpeg"
+                ],
                 badge: "Más Vendido"
             },
             {
@@ -420,8 +421,8 @@
                 image: "sentado.jpeg",
                 images: [
                     "sentado.jpeg",
-                    "sentado1.jpeg",
-],
+                    "sentado1.jpeg"
+                ],
                 badge: "Gran Tamaño"
             },
             {
@@ -489,20 +490,43 @@
                     ? 'bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold shadow-lg animate-pulse border border-yellow-200'
                     : 'bg-navidad-red text-white font-bold';
 
+                // Indicador visible permanente para celular (estilo galería)
+                const hasMultiple = imgList.length > 1;
+                const hasVideo = imgList.some(item => item.endsWith('.mp4'));
+                const galleryBadgeText = hasVideo 
+                    ? '🎬 Foto + Video' 
+                    : `📷 ${imgList.length} Fotos`;
+
                 return `
                 <div class="glass-card rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between hover:-translate-y-2 transition-all duration-300 ${cardBorder}">
                     <div>
+                        <!-- Contenedor de Imagen -->
                         <div class="relative h-72 overflow-hidden bg-slate-900 flex items-center justify-center p-2 cursor-pointer group" onclick="openImageModal(${imgListJson}, '${product.name.replace(/'/g, "\\'")}')">
-                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
-                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl">
-                                <span class="bg-slate-900/90 text-navidad-lightgold text-xs px-3 py-1.5 rounded-full border border-navidad-gold/40 font-medium">🔍 Ver detalle (${imgList.length})</span>
-                            </div>
+                            
+                            <img src="${product.image}?v=2" alt="${product.name}" class="w-full h-full object-contain rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400x300/f8fafc/1e293b?text=${encodeURIComponent(product.name)}'">
+                            
+                            <!-- Etiqueta de Categoría (Izquierda Arriba) -->
                             <span class="absolute top-4 left-4 ${badgeStyle} text-xs px-3 py-1.5 rounded-full shadow-md z-10 flex items-center gap-1">
                                 ${product.badge}
                             </span>
+
+                            <!-- Indicador SIEMPRE visible en celular (Derecha Arriba) -->
+                            ${hasMultiple ? `
+                            <span class="absolute top-4 right-4 bg-slate-950/85 backdrop-blur-md text-navidad-lightgold text-xs font-semibold px-3 py-1.5 rounded-full border border-navidad-gold/50 shadow-lg z-10 flex items-center gap-1.5 animate-pulse">
+                                <span>${galleryBadgeText}</span>
+                                <i class="fa-solid fa-up-right-and-down-left-from-center text-[10px]"></i>
+                            </span>
+                            ` : ''}
+
+                            <!-- Medidas (Derecha Abajo) -->
                             <span class="absolute bottom-4 right-4 bg-slate-900/90 backdrop-blur-md text-navidad-lightgold text-xs px-3 py-1 rounded-full font-medium border border-navidad-gold/30 z-10">
                                 <i class="fa-solid fa-ruler-vertical mr-1"></i>${product.dimensions}
                             </span>
+
+                            <!-- Franja inferior sutil que invita a tocar -->
+                            <div class="absolute bottom-4 left-4 z-10 bg-black/60 backdrop-blur-sm text-slate-300 text-[11px] px-2.5 py-1 rounded-full border border-white/10">
+                                👆 Toca para ver más
+                            </div>
                         </div>
 
                         <div class="p-6 space-y-3">
@@ -565,7 +589,7 @@
             } else {
                 modalVideo.classList.add('hidden');
                 modalVideo.src = "";
-                modalImg.src = currentItem;
+                modalImg.src = currentItem + "?v=2";
                 modalImg.classList.remove('hidden');
             }
 
@@ -583,7 +607,7 @@
                         `;
                     }
                     return `
-                        <img src="${item}" onclick="selectModalImage(${idx})" class="w-16 h-16 object-cover rounded-xl cursor-pointer border-2 transition-all ${activeBorder}" onerror="this.src='https://via.placeholder.com/100?text=Foto'">
+                        <img src="${item}?v=2" onclick="selectModalImage(${idx})" class="w-16 h-16 object-cover rounded-xl cursor-pointer border-2 transition-all ${activeBorder}" onerror="this.src='https://via.placeholder.com/100?text=Foto'">
                     `;
                 }).join('');
                 thumbnailsContainer.classList.remove('hidden');
