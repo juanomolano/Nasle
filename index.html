@@ -510,23 +510,23 @@
                                 ${product.badge}
                             </span>
 
-                            <!-- Indicador SIEMPRE visible en celular (Derecha Arriba) -->
-                            ${hasMultiple ? `
-                            <span class="absolute top-4 right-4 bg-slate-950/85 backdrop-blur-md text-navidad-lightgold text-xs font-semibold px-3 py-1.5 rounded-full border border-navidad-gold/50 shadow-lg z-10 flex items-center gap-1.5">
-                                <span>${galleryBadgeText}</span>
-                                <i class="fa-solid fa-up-right-and-down-left-from-center text-[10px]"></i>
-                            </span>
-                            ` : ''}
+                            <!-- Bloque Superior Derecho: Contador y "Toca para ver más" alineados verticalmente -->
+                            <div class="absolute top-4 right-4 z-10 flex flex-col items-end gap-1.5">
+                                ${hasMultiple ? `
+                                <span class="bg-slate-950/85 backdrop-blur-md text-navidad-lightgold text-xs font-semibold px-3 py-1.5 rounded-full border border-navidad-gold/50 shadow-lg flex items-center gap-1.5">
+                                    <span>${galleryBadgeText}</span>
+                                    <i class="fa-solid fa-up-right-and-down-left-from-center text-[10px]"></i>
+                                </span>
+                                ` : ''}
+                                <span class="bg-black/75 backdrop-blur-sm text-slate-300 text-[11px] px-2.5 py-1 rounded-full border border-white/10 shadow-md">
+                                    👆 Toca para ver más
+                                </span>
+                            </div>
 
-                            <!-- Medidas (Derecha Abajo) -->
+                            <!-- Medidas (Derecha Abajo, completamente despejado) -->
                             <span class="absolute bottom-4 right-4 bg-slate-900/90 backdrop-blur-md text-navidad-lightgold text-xs px-3 py-1 rounded-full font-medium border border-navidad-gold/30 z-10">
                                 <i class="fa-solid fa-ruler-vertical mr-1"></i>${product.dimensions}
                             </span>
-
-                            <!-- Franja inferior sutil que invita a tocar -->
-                            <div class="absolute bottom-4 left-4 z-10 bg-black/60 backdrop-blur-sm text-slate-300 text-[11px] px-2.5 py-1 rounded-full border border-white/10">
-                                👆 Toca para ver más
-                            </div>
                         </div>
 
                         <div class="p-6 space-y-3">
